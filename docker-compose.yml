@@ -1,0 +1,13 @@
+version: "3"
+
+services:
+    app:
+        build: .
+        image: direktor:dev
+        working_dir: /app
+        command: uvicorn main:app --port 8080 --host 0.0.0.0 --reload
+        ports:
+            - "9050:8080"
+        volumes:
+            - .:/app
+            - ~/.ipython:/root/.ipython:cached
